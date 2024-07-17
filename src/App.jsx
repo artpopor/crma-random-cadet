@@ -92,11 +92,7 @@ function App() {
             <p className='text-md text-gray-600'>Uploaded file: {fileName}</p>
           )}
         </div>
-        <div className="card mt-3">
-          <button className='text-3xl px-4 py-2 bg-red-600 text-white rounded-md' onClick={handleRandomize}>
-            Start
-          </button>
-        </div>
+       
         {randomRow && (
           <div className="random-row flex gap-2 justify-center text-[30px] mt-4 p-4 border rounded-md bg-gray-100">
             <div>{randomRow.Column0}</div>
@@ -104,6 +100,11 @@ function App() {
             <div>{randomRow.Column2}</div>
           </div>
         )}
+         <div className="card mt-3">
+          <button className='text-3xl px-4 py-2 bg-red-600 text-white rounded-md' onClick={handleRandomize}>
+            Start
+          </button>
+        </div>
       </div>
     </div>
   )
