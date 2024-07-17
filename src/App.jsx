@@ -38,7 +38,7 @@ function App() {
           setShowConfetti(true)
           const audio = new Audio(tada)
           audio.play()
-          setTimeout(() => setShowConfetti(false), 2000) // Hide confetti after 3 seconds
+          setTimeout(() => setShowConfetti(false), 3000) // Hide confetti after 3 seconds
   
           return
         }
