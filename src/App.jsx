@@ -6,6 +6,7 @@ import Confetti from 'react-confetti'
 import './App.css'
 import pickSound from '../public/pick.mp3'
 import tada from '../public/tada.mp3'
+import bgpic from "../public/Picture1.png"
 
 function App() {
   const [data, setData] = useState([])
@@ -89,9 +90,9 @@ function App() {
   }
 
   return (
-    <div className='h-screen justify-center flex flex-col items-center'>
+    <div className='h-screen w-screen relative flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${bgpic})` }}>
       {showConfetti && <Confetti />}
-      <div className='border-2 rounded-2xl border-gray-300 bg-white p-5 w-[60%]'>
+      <div className='relative border-2 rounded-2xl border-gray-300 bg-white p-5 w-[60%] z-30'>
         <div>
           <div className='flex justify-center'>
             <img style={{ height: '300px' }} src='https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png' className="logo" alt="Vite logo" />
@@ -106,7 +107,7 @@ function App() {
             <p className='text-md text-gray-600'>Uploaded file: {fileName}</p>
           )}
         </div>
-       
+        
         {randomRow && (
           <div className="random-row flex gap-2 justify-center text-[30px] mt-4 p-4 border rounded-md bg-gray-100">
             <div>{randomRow.Column0}</div>
@@ -122,7 +123,7 @@ function App() {
             </Checkbox.Group>
           </Space>
         </div>
-        <div className="card mt-3">
+        <div className="card mt-3 flex justify-center">
           <button className='text-2xl px-10 py-2 bg-red-600 text-white rounded-md' onClick={handleRandomize}>
             Start
           </button>
@@ -130,6 +131,7 @@ function App() {
       </div>
     </div>
   )
+  
 }
 
 export default App
