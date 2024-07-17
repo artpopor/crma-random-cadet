@@ -90,11 +90,11 @@ function App() {
   }
 
   return (
-    <div className='h-screen w-screen relative flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${bgpic})` }}>
+    <div className='h-screen w-screen relative flex gap-2 items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${bgpic})` }}>
       {showConfetti && <Confetti />}
-      <div className='relative border-2 rounded-2xl border-gray-300 bg-white p-5 w-[60%] z-30'>
-        <div>
-          <div className='flex justify-center'>
+      <div className='relative border-2 rounded-2xl border-gray-300 bg-white p-10 w-[60%] z-30'>
+        <div className='flex gap-2 flex-col'>
+          <div className='flex justify-center gap-5'>
             <img style={{ height: '300px' }} src='https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png' className="logo" alt="Vite logo" />
           </div>
           <h1 className='text-3xl font-semibold text-gray-500'>CRMA RANDOM CADETS</h1>
