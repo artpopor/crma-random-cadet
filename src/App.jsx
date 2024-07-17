@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Upload, Button, message } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 import * as XLSX from 'xlsx'
+import Confetti from 'react-confetti'
 import './App.css'
 import pickSound from '../public/pick.mp3'
 import tada from '../public/tada.mp3'
@@ -9,6 +10,7 @@ function App() {
   const [data, setData] = useState([])
   const [randomRow, setRandomRow] = useState(null)
   const [fileName, setFileName] = useState('')
+  const [showConfetti, setShowConfetti] = useState(false)
 
   const handleUpload = (file) => {
     setFileName(file.name)
@@ -33,8 +35,11 @@ function App() {
 
       const randomize = () => {
         if (count >= 20) {
+          setShowConfetti(true)
           const audio = new Audio(tada)
           audio.play()
+          setTimeout(() => setShowConfetti(false), 2000) // Hide confetti after 3 seconds
+  
           return
         }
 
@@ -71,10 +76,11 @@ function App() {
 
   return (
     <div className='h-screen justify-center flex flex-col items-center'>
+      {showConfetti && <Confetti />}
       <div className='border-2 rounded-2xl border-gray-300 p-5 w-[60%]'>
-        <div className='flex flex-col gap-5'>
+        <div>
           <div className='flex justify-center'>
-            <img style={{ height: '250px' }} src='https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png' alt="Vite logo" />
+            <img style={{ height: '300px' }} src='https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png' className="logo" alt="Vite logo" />
           </div>
           <h1 className='text-3xl font-semibold text-gray-500'>CRMA RANDOM CADETS</h1>
         </div>
