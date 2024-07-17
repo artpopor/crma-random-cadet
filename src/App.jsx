@@ -4,7 +4,7 @@ import { UploadOutlined } from '@ant-design/icons'
 import * as XLSX from 'xlsx'
 import './App.css'
 import pickSound from '../public/pick.mp3'
-
+import tada from '../public/tada.mp3'
 function App() {
   const [data, setData] = useState([])
   const [randomRow, setRandomRow] = useState(null)
@@ -33,6 +33,8 @@ function App() {
 
       const randomize = () => {
         if (count >= 20) {
+          const audio = new Audio(tada)
+          audio.play()
           return
         }
 
