@@ -77,7 +77,7 @@ function App() {
   return (
     <div className='h-screen justify-center flex flex-col items-center'>
       {showConfetti && <Confetti />}
-      <div className='border-2 rounded-2xl border-gray-300 p-5 w-[60%]'>
+      <div className='border-2 rounded-2xl border-gray-300 bg-white p-5 w-[60%]'>
         <div>
           <div className='flex justify-center'>
             <img style={{ height: '300px' }} src='https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png' className="logo" alt="Vite logo" />
