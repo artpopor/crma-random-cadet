@@ -7,7 +7,7 @@ import './App.css'
 import pickSound from '../public/pick.mp3'
 import tada from '../public/tada.mp3'
 import bgpic from "../public/Picture1.png"
-
+import logo from '../public/CRMA_logo.png'
 function App() {
   const [data, setData] = useState([])
   const [randomRow, setRandomRow] = useState(null)
@@ -108,13 +108,13 @@ function App() {
           <div className="flex justify-center gap-5">
             <img
               style={{ height: '300px' }}
-              src="https://www.crma.ac.th/wp-content/uploads/2023/06/cropped-crma_logo.png"
+              src={logo}
               className="logo"
               alt="CRMA Logo"
             />
           </div>
           <h1 className="text-3xl font-semibold text-gray-500">
-            CRMA RANDOM CADETS
+            CRMA RANDOM
           </h1>
         </div>
 
