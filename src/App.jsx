@@ -130,7 +130,7 @@ function App() {
 
         {/* Display the random row (all columns joined) */}
         {randomRow && (
-          <div className="random-row flex gap-2 justify-center text-[30px] mt-4 p-4 border rounded-md bg-gray-100">
+          <div className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 text-[60px]">
             {Object.values(randomRow).join(' ')}
           </div>
         )}
