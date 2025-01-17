@@ -103,7 +103,7 @@ function App() {
     >
       {showConfetti && <Confetti />}
 
-      <div className="relative border-2 rounded-2xl border-gray-300 bg-white p-10 w-[60%] z-30">
+      <div className="relative border-2 rounded-2xl border-gray-300 bg-white p-10 md:w-[95%] z-30">
         <div className="flex gap-2 flex-col">
           <div className="flex justify-center gap-5">
             <img
@@ -113,7 +113,7 @@ function App() {
               alt="CRMA Logo"
             />
           </div>
-          <h1 className="text-3xl font-semibold text-gray-500">
+          <h1 className="text-[5vw] font-semibold text-gray-500">
             CRMA RANDOM
           </h1>
         </div>
@@ -130,15 +130,26 @@ function App() {
 
         {/* Display the random row (all columns joined) */}
         {randomRow && (
-          <div className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 text-[60px]">
-            {Object.values(randomRow).join(' ')}
-          </div>
+     <div
+     className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 w-full"
+     style={{
+       whiteSpace: 'nowrap',  // Prevent text wrapping
+       overflow: 'hidden',    // Prevent overflow
+       textOverflow: 'ellipsis', // Optional for trimming overflowed text
+       fontSize: '7vw',       // Dynamically adjusts based on viewport width
+     }}
+   >
+     {Object.values(randomRow).join(' ')}
+   </div>
+   
+     
+      
         )}
 
         {/* Randomize Button */}
         <div className="card mt-3 flex justify-center">
           <button
-            className="text-2xl px-10 py-2 bg-red-600 text-white rounded-md"
+            className="flex justify-center px-10 py-2 bg-red-600 text-white rounded-md h-[10vw] w-[20vw] text-[4vw] text-center"
             onClick={handleRandomize}
           >
             Start
