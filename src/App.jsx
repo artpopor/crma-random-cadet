@@ -135,7 +135,7 @@ function App() {
             />
           </div>
           <h1 className="text-[5vw] font-semibold text-gray-500">
-            CRMA RANDOM
+            INFBN CRMA
           </h1>
         </div>
 
