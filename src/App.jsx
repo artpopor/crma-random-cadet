@@ -153,7 +153,7 @@ function App() {
         {randomRow && (
  <div
  ref={containerRef}
- className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 w-full"
+ className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 w-full text-black"
  style={{
    whiteSpace: 'nowrap',        // Keep text on one line
    overflow: 'hidden',          // Hide overflow
