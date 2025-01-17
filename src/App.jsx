@@ -8,6 +8,8 @@ import pickSound from '../public/pick.mp3'
 import tada from '../public/tada.mp3'
 import bgpic from "../public/Picture1.png"
 import logo from '../public/CRMA_logo.png'
+import { useRef } from 'react'
+import { useEffect } from 'react'
 function App() {
   const [data, setData] = useState([])
   const [randomRow, setRandomRow] = useState(null)
@@ -95,15 +97,34 @@ function App() {
     accept: '.xlsx',
     showUploadList: false
   }
+  const containerRef = useRef(null);
+  const [fontSize, setFontSize] = useState(100); // Start large (in px)
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Reset to a large size (so we can shrink down if needed)
+    let newFontSize = 100;
+    container.style.fontSize = `${newFontSize}px`;
+
+    // While text is overflowing, keep shrinking the font size
+    while (container.scrollWidth > container.clientWidth && newFontSize > 5) {
+      newFontSize -= 1;
+      container.style.fontSize = `${newFontSize}px`;
+    }
+
+    // Save the final size to state, if you need it for something else
+    setFontSize(newFontSize*0.7);
+  }, [randomRow]);
   return (
     <div
       className="h-screen w-screen relative flex gap-2 items-center justify-center bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: `url(${bgpic})` }}
     >
-      {showConfetti && <Confetti />}
+      {showConfetti && <Confetti style={{zIndex:9999}}  />}
 
-      <div className="relative border-2 rounded-2xl border-gray-300 bg-white p-10 md:w-[95%] z-30">
+      <div className="relative border-2 rounded-2xl border-gray-300 bg-white p-10 md:w-[95%] z-20">
         <div className="flex gap-2 flex-col">
           <div className="flex justify-center gap-5">
             <img
@@ -130,18 +151,19 @@ function App() {
 
         {/* Display the random row (all columns joined) */}
         {randomRow && (
-     <div
-     className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 w-full"
-     style={{
-       whiteSpace: 'nowrap',  // Prevent text wrapping
-       overflow: 'hidden',    // Prevent overflow
-       textOverflow: 'ellipsis', // Optional for trimming overflowed text
-       fontSize: '7vw',       // Dynamically adjusts based on viewport width
-     }}
-   >
-     {Object.values(randomRow).join(' ')}
-   </div>
-   
+ <div
+ ref={containerRef}
+ className="random-row flex gap-2 justify-center mt-4 p-4 border rounded-md bg-gray-100 w-full"
+ style={{
+   whiteSpace: 'nowrap',        // Keep text on one line
+   overflow: 'hidden',          // Hide overflow
+   textOverflow: 'ellipsis',    // Optional: Ellipsis if overflows
+   fontSize: `${fontSize}px`,   // Dynamically controlled
+ }}
+>
+ {Object.values(randomRow).join(' ')}
+</div>
+ 
      
       
         )}
@@ -149,7 +171,7 @@ function App() {
         {/* Randomize Button */}
         <div className="card mt-3 flex justify-center">
           <button
-            className="flex justify-center px-10 py-2 bg-red-600 text-white rounded-md h-[10vw] w-[20vw] text-[4vw] text-center"
+            className="flex justify-center items-center px-10 py-2 bg-red-600 text-white rounded-md h-[10vw] w-[20vw] text-[4vw] text-center"
             onClick={handleRandomize}
           >
             Start
