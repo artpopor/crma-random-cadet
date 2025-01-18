@@ -61,11 +61,11 @@ function App() {
     }
 
     let count = 0
-    let interval = 300
+    let interval = 700
 
     const randomize = () => {
       // After 20 picks, show confetti and stop
-      if (count >= 20) {
+      if (count >= 30) {
         setShowConfetti(true)
         const audio = new Audio(tada)
         audio.play()
